@@ -35,7 +35,6 @@ This repository satisfies the above requirement using a clean, reusable implemen
 
 **File:** `batch_relative_filter.py`
 
-````python
 batch_relative_filter(scores: List[float]) -> List[bool]
 
 ## Input
@@ -45,7 +44,7 @@ batch_relative_filter(scores: List[float]) -> List[bool]
 ## Output
 
 - Boolean list of the same length as `scores`:
-  - `True`  → Keep document
+  - `True` → Keep document
   - `False` → Discard document
 
 ---
@@ -64,11 +63,11 @@ The algorithm adapts dynamically to the score distribution within each batch ins
 
 ### Step 3: Case-Based Filtering
 
-| Case | Condition | Strategy |
-|-----|----------|----------|
-| Flat distribution | Low score variance | Keep top few documents |
-| Strong cluster | All scores high | Keep scores above batch mean |
-| Weak cluster | All scores low | Keep minimal top documents |
+| Case               | Condition            | Strategy                        |
+| ------------------ | -------------------- | ------------------------------- |
+| Flat distribution  | Low score variance   | Keep top few documents          |
+| Strong cluster     | All scores high      | Keep scores above batch mean    |
+| Weak cluster       | All scores low       | Keep minimal top documents      |
 | Mixed distribution | Clear confidence gap | Split using maximum Z-score gap |
 
 ### Step 4: Safety Guarantee
@@ -90,6 +89,7 @@ The test script evaluates the algorithm on:
 - Adversarial distributions
 
 Each test prints:
+
 - Input scores
 - Keep/discard mask
 - Per-document decision
@@ -98,4 +98,4 @@ Each test prints:
 
 ```bash
 python test_batch_relative_filter.py
-````
+```
